@@ -147,7 +147,13 @@ impl SignTransactionMessage<EIP2930Transaction, EIP2930TransactionMessage> for A
         &self,
         txm: EIP2930TransactionMessage,
     ) -> Result<EIP2930Transaction, ecdsaError> {
-        let digest = Keccak256::new_with_prefix(rlp::encode(&txm));
+        let txm_rlp = rlp::encode(&txm);
+
+        let mut txm_rlp_with_type_prefix = vec![0; 1 + txm_rlp.len()];
+        txm_rlp_with_type_prefix[0] = 1;
+        txm_rlp_with_type_prefix[1..].copy_from_slice(&txm_rlp);
+
+        let digest = Keccak256::new_with_prefix(txm_rlp_with_type_prefix);
         let signing_key = SigningKey::from_bytes(&(self.signing_key.0.into()))?;
 
         let (signature, recid) = signing_key.sign_digest_recoverable(digest)?;
