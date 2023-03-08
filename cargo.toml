@@ -1,0 +1,41 @@
+[package]
+name = "ethereum_tee"
+version = "0.14.0"
+authors = ["Minqi Wang <minqi.wang@litentry.com>"]
+description = "Ethereum Raw Signature Module for TEE environment"
+repository = "https://github.com/litentry/ethereum-tee.git"
+keywords = ["no_std", "ethereum"]
+edition = "2021"
+
+[dependencies]
+bytes = { version = "1.0", default-features = false }
+codec = { package = "parity-scale-codec", version = "3.2", default-features = false, features = ["derive"], optional = true }
+ecdsa-core = { version = "0.16.0", package = "ecdsa", default-features = false, features = ["dev"] }
+ethereum = { git = "https://github.com/litentry/ethereum", branch = "master", default-features = false }
+ethereum-types = { version = "0.14", default-features = false, features = ["rlp", "codec"] }
+k256 = { git = "https://github.com/RustCrypto/elliptic-curves", rev = "195ff6788b1b2c3ae481e05000e4a3156ea30d41", default-features = false }
+hex-literal = "0.3"
+rlp = { version = "0.5.2", default-features = false, features = ["derive"] }
+scale-info = { version = "2.3", default-features = false, features = ["derive"], optional = true }
+serde = { version = "1.0", default-features = false, features = ["derive"], optional = true }
+sha3 = { version = "0.10", default-features = false }
+sp-std = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.37", default-features = false }
+
+[dev-dependencies]
+hex = "0.4"
+hex-literal = "0.3"
+
+[features]
+default = ["std"]
+std = [
+    "bytes/std",
+    "codec/std",
+    "ethereum/std",
+    "ethereum-types/std",
+    "rlp/std",
+    "k256/ecdsa",
+    "scale-info/std",
+    "serde/std",
+    "sha3/std",
+    "sp-std/std",
+]
