@@ -1,6 +1,6 @@
 #![cfg_attr(not(feature = "std"), no_std)]
 use bytes::BytesMut;
-use codec::{Decode, Encode};
+use codec::{Decode, Encode, MaxEncodedLen};
 // Always use new!! This method should not be used for
 pub use ecdsa_core::signature::Error as ecdsaError;
 
@@ -15,8 +15,7 @@ use ethereum::{
 // };
 use ethereum_types::{H160, H256};
 use k256::ecdsa::SigningKey;
-// TODO: Do we need to implement this?
-// use scale_info::TypeInfo;
+use scale_info::TypeInfo;
 use sha3::{Digest, Keccak256};
 use sp_std::vec::Vec;
 // There are three version of transaction
@@ -31,7 +30,7 @@ pub struct AccountPrivateKeyVC {
 
 // TODO: The key length should not be fixed
 // This type is for demonstrating purpose only
-#[derive(Clone, Eq, PartialEq, Encode, Decode)]
+#[derive(Clone, Eq, PartialEq, Encode, Decode, MaxEncodedLen, TypeInfo)]
 pub struct AccountPrivateKey {
     chain_id: u64,
     signing_key: H256,
