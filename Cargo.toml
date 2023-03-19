@@ -1,5 +1,5 @@
 [package]
-name = "ethereum_tee"
+name = "ethereum-tee"
 version = "0.14.0"
 authors = ["Minqi Wang <minqi.wang@litentry.com>"]
 description = "Ethereum Raw Signature Module for TEE environment"
