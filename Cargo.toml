@@ -13,7 +13,7 @@ codec = { package = "parity-scale-codec", version = "3.0.0", default-features = 
 ecdsa-core = { version = "0.16.0", package = "ecdsa", default-features = false, features = ["dev"] }
 ethereum = { git = "https://github.com/litentry/ethereum", branch = "master", default-features = false }
 ethereum-types = { version = "0.14", default-features = false, features = ["rlp", "codec"] }
-k256 = { git = "https://github.com/RustCrypto/elliptic-curves", rev = "195ff6788b1b2c3ae481e05000e4a3156ea30d41", default-features = false }
+k256 = { git = "https://github.com/RustCrypto/elliptic-curves", rev = "195ff6788b1b2c3ae481e05000e4a3156ea30d41", default-features = false, features = ["ecdsa"] }
 hex-literal = "0.3"
 rlp = { version = "0.5.2", default-features = false, features = ["derive"] }
 scale-info = { version = "2.3", default-features = false, features = ["derive"] }
@@ -33,7 +33,7 @@ std = [
     "ethereum/std",
     "ethereum-types/std",
     "rlp/std",
-    "k256/ecdsa",
+    "k256/std",
     "scale-info/std",
     "serde/std",
     "sha3/std",
