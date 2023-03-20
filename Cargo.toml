@@ -9,15 +9,15 @@ edition = "2021"
 
 [dependencies]
 bytes = { version = "1.0", default-features = false }
-codec = { package = "parity-scale-codec", version = "3.2", default-features = false, features = ["derive"], optional = true }
+codec = { package = "parity-scale-codec", version = "3.0.0", default-features = false, features = ["derive", "max-encoded-len"] }
 ecdsa-core = { version = "0.16.0", package = "ecdsa", default-features = false, features = ["dev"] }
 ethereum = { git = "https://github.com/litentry/ethereum", branch = "master", default-features = false }
 ethereum-types = { version = "0.14", default-features = false, features = ["rlp", "codec"] }
-k256 = { git = "https://github.com/RustCrypto/elliptic-curves", rev = "195ff6788b1b2c3ae481e05000e4a3156ea30d41", default-features = false }
+k256 = { git = "https://github.com/RustCrypto/elliptic-curves", rev = "195ff6788b1b2c3ae481e05000e4a3156ea30d41" }
 hex-literal = "0.3"
 rlp = { version = "0.5.2", default-features = false, features = ["derive"] }
-scale-info = { version = "2.3", default-features = false, features = ["derive"], optional = true }
-serde = { version = "1.0", default-features = false, features = ["derive"], optional = true }
+scale-info = { version = "2.3", default-features = false, features = ["derive"] }
+serde = { version = "1.0", default-features = false, features = ["alloc", "derive"] }
 sha3 = { version = "0.10", default-features = false }
 sp-std = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.37", default-features = false }
 

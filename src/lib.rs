@@ -17,7 +17,7 @@ use ethereum_types::{H160, H256};
 use k256::ecdsa::SigningKey;
 use scale_info::TypeInfo;
 use sha3::{Digest, Keccak256};
-use sp_std::vec::Vec;
+use sp_std::{vec, vec::Vec};
 // There are three version of transaction
 // 2023/3/2 Stay with EIP1559
 
